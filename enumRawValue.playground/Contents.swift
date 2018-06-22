@@ -1,8 +1,9 @@
-//: Playground - noun: a place where people can play
-
+// Dale Musser - dale@dalemusser.com
 // https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html
 // https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html#ID149
 // https://appventure.me/2015/10/17/advanced-practical-enum-examples/#sec-1-2
+
+import UIKit
 
 enum StatusCode: Int {
     case success = 200
