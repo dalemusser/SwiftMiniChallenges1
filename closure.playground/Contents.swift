@@ -15,6 +15,9 @@ struct MathOperation {
     // If the closure was only going to be called in the init() when the init() is executed after receiving the closure, then it would not be escaping.
     
     init?(units: String, operation: @escaping (Double, Double) -> Double) {
+        if (units == "") {
+            return nil
+        }
         self.units = units
         self.operation = operation
     }
@@ -22,37 +25,48 @@ struct MathOperation {
 
 // The following are examples of using the struct and the closure in the struct.
 
-// Example 1
+// Example 1: should fail because units is empty string.
+
+var test = MathOperation(units: "", operation: {
+    (x, y) in
+    return x + y
+})
+
+if test == nil {
+    print("It failed!")
+}
+
+// Example 2: defining a closure in the context of the call to create a MathOperation
 
 var distance = MathOperation(units: "km", operation: {
     (x, y) in
     return x + y
 })
 
-// distance is optional and needs to be unwrapped to use because MathOperation init is failable and yields an optional
+// distance is optional and needs to be unwrapped to use because MathOperation init is failable and yields an optional.
 if let distance = distance {
     let sum = distance.operation(12.5, 22.4)
     let units = distance.units
     print("\(sum) \(units)")
 }
 
-// Example 2
+// Example 3: defining a closure that is assigned to a variable that is then used to create MathOperation.
 
 let multiply = {
     (a: Double, b: Double) in
     return a * b
 }
 
-var volume = MathOperation(units: "square meters", operation: multiply)
+var area = MathOperation(units: "square meters", operation: multiply)
 
-// volume is optional and needs to be unwrapped to use because MathOperation init is failable and yields an optional
-if let volume = volume {
-    let result = volume.operation(10.0, 20.0)
-    let units = volume.units
+// area is optional and needs to be unwrapped to use because MathOperation init is failable and yields an optional.
+if let area = area {
+    let result = area.operation(10.0, 20.0)
+    let units = area.units
     print("\(result) \(units)")
 }
 
-// Example 3
+// Example 4: defining a function that is used as the closure when creating a MathOperation.
 
 func divide(i: Double, j: Double) -> Double {
     return i/j
