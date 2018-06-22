@@ -1,3 +1,7 @@
+// Dale Musser - dale@dalemusser.com
+// https://docs.swift.org/swift-book/LanguageGuide/Functions.html
+// https://docs.swift.org/swift-book/LanguageGuide/StringsAndCharacters.html#ID292
+
 import UIKit
 
 func check(value: Int) -> String? {
