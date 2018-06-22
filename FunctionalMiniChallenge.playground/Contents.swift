@@ -1,4 +1,8 @@
-//: Playground - noun: a place where people can play
+// Dale Musser - dale@sdalemusser.com
+// https://medium.com/@mimicatcodes/simple-higher-order-functions-in-swift-3-0-map-filter-reduce-and-flatmap-984fa00b2532
+// https://useyourloaf.com/blog/swift-guide-to-map-filter-reduce/
+// https://developer.apple.com/reference/swift/array
+// https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html#ID107
 
 import UIKit
 
@@ -135,5 +139,18 @@ for student in students {
 let average = total / students.count
 print(average)
 
+// The average grade for a subgroup like freshman could be done like this.
+
+let freshmanTotal1 = freshmen1.reduce(0) {
+    (result, student) in
+    return result + student.grade
+}
+let freshmanAverage1 = freshmanTotal1 / freshmen1.count
+print(freshmanAverage1)
+
+// The following does a filter to get the freshmen then takes the resulting array and uses it with reduce to get the sum of grades.
+let freshmanTotal2 = students.filter({$0.year == StudentYear.freshman}).reduce(0, {$0 + $1.grade})
+// To get the average, the count of freshmen is needed, but we don't have direct access to the array of freshmen from the above.
+// So, for this example we want to first get the array of freshmen.  Then use it to get the total and get the count to calculate the average.
 
 
