@@ -1,5 +1,6 @@
 // Dale Musser - dale@dalemusser.com
 // https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html
+// https://docs.swift.org/swift-book/LanguageGuide/Initialization.html
 // https://docs.swift.org/swift-book/LanguageGuide/Closures.html
 // https://www.andrewcbancroft.com/2017/04/26/what-in-the-world-is-an-escaping-closure-in-swift/
 // https://medium.com/@kumarpramod017/what-do-mean-escaping-and-nonescaping-closures-in-swift-d404d721f39d
